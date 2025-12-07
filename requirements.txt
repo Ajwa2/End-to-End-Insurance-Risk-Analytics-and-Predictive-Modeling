@@ -1,1 +1,7 @@
+numpy
+pandas
+matplotlib
+seaborn
 pytest
+flake8
+jupyter

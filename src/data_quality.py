@@ -80,11 +80,15 @@ def main():
     miss = df.isna().sum()
     print(miss[miss > 0].sort_values(ascending=False))
 
-    # Save a small processed sample for EDA
+    # Save a small processed sample for EDA (keep additional categorical/geography/vehicle columns)
     out = Path('data') / 'processed_sample_from_data_quality.csv'
-    # keep core columns if available
-    keep = [c for c in ['UnderwrittenCoverID', 'PolicyID', 'TransactionMonth', 'TotalPremium', 'TotalClaims'] if c in df.columns]
-    df_sample = df.loc[:, keep].head(200000)
+    # keep a broader set of columns useful for EDA and stats
+    desired = [
+        'UnderwrittenCoverID','PolicyID','TransactionMonth','TotalPremium','TotalClaims',
+        'Province','PostalCode','Gender','VehicleType','make','Model','CustomValueEstimate'
+    ]
+    keep = [c for c in desired if c in df.columns]
+    df_sample = df.loc[:, keep].head(400000)
     df_sample.to_csv(out, index=False)
     print('\nSaved sample to', out)
 

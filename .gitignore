@@ -9,4 +9,5 @@ venv/
 .DS_Store
 .env
 data/
+!data/*.dvc
 demo/

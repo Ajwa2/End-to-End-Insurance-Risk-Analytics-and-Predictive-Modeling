@@ -1,8 +1,4 @@
-"""Exploratory Data Analysis plots focused on Risk and Profitability.
 
-Produces and saves plots for LossRatio, distributions, bivariate relationships,
-province-level loss ratio, outlier boxplots, and vehicle/gender claims breakdown.
-"""
 from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,9 +7,9 @@ import seaborn as sns
 
 def load_processed():
     # prefer processed sample saved by data_quality or the raw file
-    p1 = Path('data') / 'processed_sample_from_data_quality.csv'
-    p2 = Path('data') / 'processed_sample.csv'
-    fallback = Path('data') / 'MachineLearningRating_v3.txt'
+    p1 = Path('../data') / 'processed_sample_from_data_quality.csv'
+    p2 = Path('../data') / 'processed_sample.csv'
+    fallback = Path('../data') / 'MachineLearningRating_v3.txt'
     if p1.exists():
         df = pd.read_csv(p1, parse_dates=['TransactionMonth'], low_memory=False)
     elif p2.exists():
